@@ -1,14 +1,15 @@
 import json
 import os
+import logging
 
 def load_from_cache(query):
-    """Memuat hasil pencarian dari cache.
+    """Load search results from cache.
 
     Args:
-        query (str): Kueri pencarian.
+        query (str): Search query.
 
     Returns:
-        dict: Hasil pencarian dalam format JSON, atau None jika tidak ada cache.
+        dict: Search results in JSON format, or None if there is no cache.
     """
     cache_file = f"cache/{query}.json"
 
@@ -23,11 +24,11 @@ def load_from_cache(query):
             return None
 
 def save_to_cache(query, results_json):
-    """Menyimpan hasil pencarian ke cache.
+    """Save search results to cache.
 
     Args:
-        query (str): Kueri pencarian.
-        results_json (str): Hasil pencarian dalam format JSON.
+        query (str): Search query.
+        results_json (str): Search results in JSON format.
     """
     cache_dir = "cache"
     if not os.path.exists(cache_dir):
