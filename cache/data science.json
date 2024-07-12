@@ -1,0 +1,52 @@
+[
+    {
+        "Title": "datacamp.comhttps://www.datacamp.com/blog/what-is-data-science...",
+        "Link": "https://www.datacamp.com/blog/what-is-data-science-the-definitive-guide",
+        "Description": ""
+    },
+    {
+        "Title": "ibm.comhttps://www.ibm.com/topics/data-science",
+        "Link": "https://www.ibm.com/topics/data-science",
+        "Description": ""
+    },
+    {
+        "Title": "wikipedia.orghttps://en.wikipedia.org/wiki/Data_science",
+        "Link": "https://en.wikipedia.org/wiki/Data_science",
+        "Description": ""
+    },
+    {
+        "Title": "coursera.orghttps://www.coursera.org/articles/what-is-data-science",
+        "Link": "https://www.coursera.org/articles/what-is-data-science",
+        "Description": ""
+    },
+    {
+        "Title": "coursera.orghttps://www.coursera.org/articles/what-is-a-data-scientist",
+        "Link": "https://www.coursera.org/articles/what-is-a-data-scientist",
+        "Description": ""
+    },
+    {
+        "Title": "coursera.orghttps://www.coursera.org/learn/what-is-datascience",
+        "Link": "https://www.coursera.org/learn/what-is-datascience",
+        "Description": ""
+    },
+    {
+        "Title": "caltech.eduhttps://pg-p.ctme.caltech.edu/blog/data-science/...",
+        "Link": "https://pg-p.ctme.caltech.edu/blog/data-science/what-is-data-science",
+        "Description": ""
+    },
+    {
+        "Title": "harvard.eduhttps://www.harvardonline.harvard.edu/course/data...",
+        "Link": "https://www.harvardonline.harvard.edu/course/data-science-principles",
+        "Description": ""
+    },
+    {
+        "Title": "oracle.comhttps://www.oracle.com/what-is-data-science",
+        "Link": "https://www.oracle.com/what-is-data-science/",
+        "Description": ""
+    },
+    {
+        "Title": "builtin.comhttps://builtin.com/data-science",
+        "Link": "https://builtin.com/data-science",
+        "Description": ""
+    }
+]
