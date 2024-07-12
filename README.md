@@ -23,8 +23,8 @@ Example:
 python src/bing_search.py -query "bing search" -limit 100
 ```
 ```sh
-python src/bing_search.py -query "python web scraping" -limit 100
+python src/bing_search.py -query "AI" -limit 100
 ```
 ```sh
-python src/bing_search.py -query "python search" -limit 100 -debug Y
+python src/bing_search.py -query "technology" -limit 100 -debug Y
 ```
