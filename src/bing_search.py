@@ -91,7 +91,7 @@ def main():
         for result in results:
             print(f"{result['Position']}: {result['Title']} - {result['link']}")
     else:
-        print("No results found.")
+        print("Scrapping Successfully.")
 
     if args.resolve:
         download_cached_results(results)
