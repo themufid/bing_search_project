@@ -18,7 +18,13 @@ Usage:
 python src/bing_search.py -query "<search_query>" [-limit <limit>] [-resolve] [-search-domain <domain>] [-endpoint [<ip_address>]]
 ```
 
-```sh
 Example:
-python src/bing_search.py -query "bing web scraping" -limit 100
-
+```sh
+python src/bing_search.py -query "bing search" -limit 100
+```
+```sh
+python src/bing_search.py -query "python web scraping" -limit 100
+```
+```sh
+python src/bing_search.py -query "python search" -limit 100 -debug Y
+```
