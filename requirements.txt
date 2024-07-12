@@ -2,4 +2,4 @@ requests
 beautifulsoup4
 logging
 argparse
-
+python-dotenv

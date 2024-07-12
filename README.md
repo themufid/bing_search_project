@@ -1,4 +1,4 @@
-# Bing Search
+# Bing Search and Cache Downloader
 
 ## Project Overview
 We need a Python script that will use the Bing search engine to perform searches and optionally download cached results. The script will initiate a session, extract a conversation ID (CID) from the Bing homepage, and use it to perform searches until a specified limit is reached. The results can be limited to a specific domain if provided. Additionally, the script can download the cached versions of the search results. If the -endpoint argument is provided, the script should send the search results to an internal API instead of writing them to a file.
