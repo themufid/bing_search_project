@@ -19,7 +19,7 @@ signal.signal(signal.SIGINT, signal_handler)
 def setup_logging(debug):
   """Sets up logging configuration."""
   if not os.path.exists('logs'):
-    os.makedirs('logs')  # Create logs directory if it doesn't exist
+    os.makedirs('logs') 
 
   log_level = logging.DEBUG if debug == 'Y' else logging.INFO
   logging.basicConfig(level=log_level,
@@ -43,11 +43,9 @@ def parse_and_log_results(html_content):
 
     results.append({"Title": title, "Link": link, "Description": description})
 
-  # Save results to JSON file
   with open('output/bing_search_results.json', 'w') as outfile:
     json.dump(results, outfile, indent=4)
 
-  # Download cached results if enabled
   if args.resolve:
     cache_downloader.save_to_cache(args.query, results)  # Use results directly
 
@@ -67,20 +65,19 @@ def main(query, limit, debug):
     search_url = f"https://www.bing.com/search?q={quote_plus(query)}&first={offset}"
     response = session.get(search_url)
 
-    # Check for cached results before making a request
     cached_results = cache_downloader.load_from_cache(query)
     if cached_results:
       logging.info(f"Using cached results for: {query}")
-      print(cached_results)  # Print cached results
-      break  # Exit loop if cached results are available
-
+      print(cached_results)  
+      break  
+  
     if response.status_code != 200:
       logging.error(f"Failed to retrieve results: {response.status_code}")
       break
 
     results_json = parse_and_log_results(response.content)
 
-    print(results_json)  # Print retrieved results
+    print(results_json)  
 
     offset += 10
 
