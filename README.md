@@ -5,10 +5,6 @@ We need a Python script that will use the Bing search engine to perform searches
 
 ## Usage Instructions
 
-### Prerequisites
-- Python 3.x
-- Required Python libraries: requests, BeautifulSoup4, concurrent.futures, logging, argparse
-
 ### Setup
 1. Clone the repository containing the script.
 2. Install the required libraries:
