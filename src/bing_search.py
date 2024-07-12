@@ -2,13 +2,12 @@ import argparse
 import logging
 import requests
 from bs4 import BeautifulSoup
-from config import COOKIES, HEADERS
 import os
 import json
 import signal
 import sys
 from urllib.parse import quote_plus
-from api_handler import post_to_api
+import cache_downloader
 
 def signal_handler(sig, frame):
     logging.info("Exiting script...")
@@ -31,17 +30,22 @@ def parse_and_log_results(html_content):
     results = []
 
     for item in soup.select("li.b_algo"):
-        title = item.find("a").text
+        title = item.find("a").text.strip()
         link = item.find("a")["href"]
-        description = item.find("div.b_caption").text
-        results.append({"Title": title, "Link": link, "Description": description})
+        description = item.find("div.b_caption")
+        if description:
+            description = description.text.strip()
+        else:
+            description = ""
 
-    return results
+        results.append({"Title": title, "Link": link, "Description": description})
+    
+    with open('bing_search_results.json', 'w') as outfile:
+        json.dump(results, outfile, indent=4)
 
 def main(query, limit, debug):
     setup_logging(debug)
     session = requests.Session()
-    session.cookies.update(COOKIES)
 
     logging.info(f"Starting Bing search for: {query}")
 
@@ -50,22 +54,21 @@ def main(query, limit, debug):
 
     while total_results < limit:
         search_url = f"https://www.bing.com/search?q={quote_plus(query)}&first={offset}"
-        response = session.get(search_url, headers=HEADERS)
+        response = session.get(search_url)
 
+        cached_results = cache_downloader.load_from_cache(query)
+        if cached_results:
+            logging.info(f"Using cached results for: {query}")
+            
+            break
+        
         if response.status_code != 200:
             logging.error(f"Failed to retrieve results: {response.status_code}")
             break
 
-        results = parse_and_log_results(response.content)
-        total_results += len(results)
-        logging.info(f"Retrieved {len(results)} results.")
-        
-        for result in results:
-            logging.info(result)
+        results_json = parse_and_log_results(response.content)
 
-            api_response = post_to_api("24.152.187.23", result)
-            if api_response:
-                logging.info(f"Posted to API: {api_response.status_code}")
+        print(results_json)
 
         offset += 10
 

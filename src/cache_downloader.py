@@ -1,30 +1,38 @@
-import requests
+import json
 import os
-import logging
-from dotenv import load_dotenv
 
-load_dotenv()
+def load_from_cache(query):
+    """Memuat hasil pencarian dari cache.
 
-def download_cache(url, destination):
-    try:
-        headers = {
-            'User-Agent': load_env_variables('env/headers.env').get('USER_AGENT', 'Your_User_Agent_String_Here'),
-            'Accept-Language': 'en-US,en;q=0.5',
-        }
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        
-        with open(destination, 'wb') as f:
-            f.write(response.content)
-        
-        logging.info(f"Downloaded cache from {url} to {destination}")
-    except requests.exceptions.RequestException as e:
-        logging.error(f"Error downloading cache: {str(e)}")
+    Args:
+        query (str): Kueri pencarian.
 
-def main():
-    url = 'https://website.com/cache_file.zip'
-    destination = 'path/to/save/cache_file.zip'
-    download_cache(url, destination)
+    Returns:
+        dict: Hasil pencarian dalam format JSON, atau None jika tidak ada cache.
+    """
+    cache_file = f"cache/{query}.json"
 
-if __name__ == "__main__":
-    main()
+    if not os.path.exists(cache_file):
+        return None
+
+    with open(cache_file, 'r') as f:
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            logging.error(f"Failed to load cache for: {query}")
+            return None
+
+def save_to_cache(query, results_json):
+    """Menyimpan hasil pencarian ke cache.
+
+    Args:
+        query (str): Kueri pencarian.
+        results_json (str): Hasil pencarian dalam format JSON.
+    """
+    cache_dir = "cache"
+    if not os.path.exists(cache_dir):
+        os.makedirs(cache_dir)
+
+    cache_file = f"{cache_dir}/{query}.json"
+    with open(cache_file, 'w') as f:
+        json.dump(results_json, f, indent=4)
