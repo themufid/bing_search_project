@@ -17,7 +17,12 @@ We need a Python script that will use the Bing search engine to perform searches
     ```
 
 ### Running the Script
-Basic Usage:
+Usage:
 ```sh
 python src/bing_search.py -query "<search_query>" [-limit <limit>] [-resolve] [-search-domain <domain>] [-endpoint [<ip_address>]]
+```
+
+```sh
+Example:
+python src/bing_search.py -query "bing web scraping" -limit 100
 

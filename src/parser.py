@@ -18,4 +18,3 @@ def parse_search_results(html_content, query, start_position):
         results.append(result)
 
     return results
-
