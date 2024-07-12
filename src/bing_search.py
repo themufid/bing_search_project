@@ -11,6 +11,7 @@ from urllib.parse import quote_plus
 from src.parser import parse_search_results
 import signal
 import sys
+import json
 
 def signal_handler(sig, frame):
     logging.info("Exiting script...")
