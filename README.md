@@ -42,11 +42,13 @@ Examples:
 ```sh
 python src/bing_search.py -query "python book"
 ```
+This result save to output/bing_search_result.json
 
 2. Search with limit of 100 results:
 ```sh
 python src/bing_search.py -query "web development" -limit 100
 ```
+This result save to output/bing_search_result.json
 
 3. Enable debug logging:
 ```sh
